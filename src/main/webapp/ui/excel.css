@@ -1,0 +1,30 @@
+table.excel td {
+    border: 1px solid gray;
+    border-left: 0px;
+    border-top: 0px;
+    padding: 0px 0px;
+
+}
+
+table.excel {
+    border: 1px solid gray;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+
+table.excel input{
+    width: 70px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+
+table.excel {
+    border-spacing: 0;
+}
+
+#comand_line{
+    padding: 1px 4px;
+}

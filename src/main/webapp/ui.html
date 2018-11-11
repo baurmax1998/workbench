@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>SapUi5-Workflow</title>
+  <link rel="stylesheet" returnType="text/css" href="ui/w3.css">
+  <link rel="stylesheet" returnType="text/css" href="ui/style.css">
+  <link rel="stylesheet" returnType="text/css" href="ui/basscss.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <script src="ui/sortable.js"></script>
+
+</head>
+<body>
+
+
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <a class="w3-bar-item w3-button" href="#">Link 1</a>
+  <a class="w3-bar-item w3-button" href="#">Link 2</a>
+  <a class="w3-bar-item w3-button" href="#">Link 3</a>
+  <a class="w3-bar-item w3-button" href="#">Link 4</a>
+  <a class="w3-bar-item w3-button" href="#">Link 5</a>
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Dropdown <i
+        class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+      <a class="w3-bar-item w3-button" href="#">Link</a>
+      <a class="w3-bar-item w3-button" href="#">Link</a>
+      <a class="w3-bar-item w3-button" href="#">Link</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <button onclick="dropdown()" class="dropbtn">View</button>
+    <div id="myDropdown" class="dropdown-content">
+      <input returnType="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+      <a href="#about">About</a>
+      <a href="#base">Base</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+      <a href="#custom">Custom</a>
+      <a href="#support">Support</a>
+      <a href="#tools">Tools</a>
+    </div>
+  </div>
+</nav>
+
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+     id="myOverlay"></div>
+
+<div class="w3-main" style="margin-left:250px;">
+
+  <div id="myTop" style="height: 40px" class="w3-container w3-top w3-theme">
+
+    <i style="padding: 0;"
+       class="fa fa-bars w3-button w3-hide-large w3-xlarge"
+       onclick="w3_open()"></i>
+    <span style="font-size: 25px;" class="w3-padding-16 ">MODEL EDITOR</span>
+
+  </div>
+
+
+  <div class="w3-container w3-row" style="padding:42px 0px 2px 0px">
+    <div class="w3-third w3-border-left">
+      <h3 style="margin: 0;" class="w3-bar">
+        <span class="w3-left w3-text-theme">FRONT</span>
+        <button class="w3-bar-item w3-button w3-theme-action w3-small w3-right w3-round-xxlarge">Tiny</button>
+      </h3>
+      <ul class="w3-ul w3-theme-d3 js-sortable-copy">
+        <li>Jill</li>
+        <li id="test">Eve
+          <span style="position: relative;float: right;"
+                onclick="this.parentElement.remove()">&times;</span>
+        </li>
+        <li>
+          <ul class="w3-ul w3-theme-d1">
+            <li>Jill</li>
+            <li>Eve</li>
+            <li>
+              <ul class="w3-ul w3-theme-l2">
+                <li>Jill</li>
+                <li>Eve</li>
+                <li>Adam</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="w3-third w3-border-left">
+      <h3 style="margin: 0;" class="w3-bar">
+        <span class="w3-left w3-text-theme">MODEL</span>
+        <button class="w3-bar-item w3-button w3-theme-action w3-small w3-right w3-round-xxlarge">Tiny</button>
+      </h3>
+      <ul class="w3-ul w3-theme-d3 js-sortable-copy-target" style="min-height: 40px">
+      </ul>
+    </div>
+    <div class="w3-third w3-border-left">
+      <h3 style="margin: 0;" class="w3-bar">
+        <span class="w3-left w3-text-theme">SOURCE</span>
+        <button class="w3-bar-item w3-button w3-theme-action w3-small w3-right w3-round-xxlarge">Tiny</button>
+      </h3>
+      <ul class="w3-ul w3-theme-d3 js-sortable-copy">
+        <li>Jill</li>
+        <li>Eve</li>
+        <li>
+          <ul class="w3-ul w3-theme-d1">
+            <li>Jill</li>
+            <li>Eve</li>
+            <li>
+              <ul class="w3-ul w3-theme-l2">
+                <li>Jill</li>
+                <li>Eve</li>
+                <li>Adam</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+
+<script src="ui/ui.js"></script>
+<script>
+ sortable('.js-sortable-copy', {
+		  forcePlaceholderSize: true,
+		  copy: true,
+			acceptFrom: false,
+		  placeholderClass: 'mb1 bg-navy border border-yellow',
+		});
+		sortable('.js-sortable-copy-target', {
+		  forcePlaceholderSize: true,
+			acceptFrom: '.js-sortable-copy,.js-sortable-copy-target',
+		  placeholderClass: 'mb1 border border-maroon',
+	  });
+
+
+
+</script>
+</body>
+</html>
